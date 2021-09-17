@@ -2,15 +2,9 @@ import facebook
 import requests
 import json
 import time 
+import Token
 
-Page_Token = "EAAFaTWn583kBAErrB8CvAF7RSeVjmgEaXM95hPO6pl9Jwkch3OfHuzEFHH65dZAGf6dghevc9d6OOdMieBCCz0ObXwGAydHqWg4r9xic9YooTnrTvyhtPUJeF89xZBbdUy1GKqCszq0AZBUH45tVxVHAwYuHW6sEb6tyaKz1gkKgroRndNo"
-PAGE_ID = "112583993849066"
-POST_ID_TO_MONITOR = "324876845953112"
-Page_Comment_ID = "324876845953112_360627765711353"
-
-COMBINED_POST_ID_TO_MONITOR = '%s_%s' % (PAGE_ID, POST_ID_TO_MONITOR) 
-
-graph = facebook.GraphAPI(Page_Token)
+graph = facebook.GraphAPI(Token.Page_Token)
 
 def reply_comment(data):
 	# reply = graph.put_object(parent_object=data, connection_name='comments',                         message='Test')
@@ -43,7 +37,7 @@ def monitor_comment():
 	# while True:
 		print("Bot is monitoring comments")
 		time.sleep(5)
-		comment_data = graph.get_connections(COMBINED_POST_ID_TO_MONITOR,"comments",order='reverse_chronological')
+		comment_data = graph.get_connections(Token.COMBINED_POST_ID_TO_MONITOR,"comments",order='reverse_chronological')
 		commends = []
 		for comment in comment_data['data'][:10]:
 			commends.append (comment)
