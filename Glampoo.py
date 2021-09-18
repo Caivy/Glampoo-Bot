@@ -2,9 +2,15 @@ import facebook
 import requests
 import json
 import time 
-import Token
 
-graph = facebook.GraphAPI(Token.Page_Token)
+Page_Token = "EAAFaTWn583kBAFmkulUXCnVRSCCCuTAa1b4bdYn4OyaOKwVmDYRahYXiEjFtfQPLe7qpoaM6B8JBP7FVsKllTxkHf3g7FV8YXsFShCbtP1rtcHohrm686BKt9947svBsDWDX5TeNAzjJsvoSGwOyrfRaTNp3W4DDIfUIR3ZBCGU8Pc4mX"
+PAGE_ID = "112583993849066"
+POST_ID_TO_MONITOR = "324876845953112"
+Page_Comment_ID = "324876845953112_360627765711353"
+
+COMBINED_POST_ID_TO_MONITOR = '%s_%s' % (PAGE_ID, POST_ID_TO_MONITOR)
+
+graph = facebook.GraphAPI(Page_Token)
 
 def reply_comment(data):
 	# reply = graph.put_object(parent_object=data, connection_name='comments',                         message='Test')
@@ -20,24 +26,20 @@ def main():
 			print("Comment has already been replies")
 		else:
 			reply_comment(data_comment)
-			print("Reply to comment")
+			print("Reply Comment")
+			time.sleep(1)
+			private_reply(data_comment)
+			
 
 def monitor_reply_comment(data):
 	reply_comment = graph.get_connections(data,"comments",order='reverse_chronological')
-	# for reply in reply_comment['data']:
-	# 	data_reply = reply_comment['data'][0]['created_time']['from']['id']
-	# print(data_reply)
-	# for i in reply_comment:
-	# 	print (i['id'])
 	for i in reply_comment['data']:
 		return i['from']['id']
 	
-
 def monitor_comment():
-	# while True:
 		print("Bot is monitoring comments")
 		time.sleep(5)
-		comment_data = graph.get_connections(Token.COMBINED_POST_ID_TO_MONITOR,"comments",order='reverse_chronological')
+		comment_data = graph.get_connections(COMBINED_POST_ID_TO_MONITOR,"comments",order='reverse_chronological')
 		commends = []
 		for comment in comment_data['data'][:10]:
 			commends.append (comment)
@@ -46,4 +48,17 @@ def monitor_comment():
 		#time.sleep(5)
 		print(data)
 		return data_converted
+def private_reply(comment_ids):
+	url = "https://graph.facebook.com/v12.0/me/messages?access_token=EAAFaTWn583kBAFmkulUXCnVRSCCCuTAa1b4bdYn4OyaOKwVmDYRahYXiEjFtfQPLe7qpoaM6B8JBP7FVsKllTxkHf3g7FV8YXsFShCbtP1rtcHohrm686BKt9947svBsDWDX5TeNAzjJsvoSGwOyrfRaTNp3W4DDIfUIR3ZBCGU8Pc4mX"
+	params = {
+    "recipient": {
+        "comment_id": comment_ids
+    },
+    "message": {
+        "text":"Testing Private_Replies"
+    }
+}
+	request = requests.post(url=url, json=params)
+	print(request.text)
+
 main()
