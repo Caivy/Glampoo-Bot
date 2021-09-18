@@ -2,19 +2,22 @@ import facebook
 import requests
 import json
 import time 
+from dotenv import load_dotenv
+import os
+from logging import log
 
-Page_Token = "EAAFaTWn583kBAEEiZC5QxyP4nwuHa3yw69r900qYEmOq8RXItIa6r9DMh3gdaumqFf6ngRsXtn11XurLwsihrog8hUcqmbZAArmJBtoceHE7PPQLvbTXV8wZAUj5oGnBu3D0r3KPxvUbveSEhN0mCn1edODK7mhZAERWKxjeiAH0Y4rUxBF4"
-PAGE_ID = "112583993849066"
-POST_ID_TO_MONITOR = "324876845953112"
-Page_Comment_ID = "324876845953112_360627765711353"
+load_dotenv()
+Page_Token = os.getenv("Page_Token")
+PAGE_ID = os.getenv("PAGE_ID")
+POST_ID_TO_MONITOR = os.getenv("POST_ID_TO_MONITOR")
+Page_Comment_ID = os.getenv("Page_Comment_ID")
+
 
 COMBINED_POST_ID_TO_MONITOR = '%s_%s' % (PAGE_ID, POST_ID_TO_MONITOR)
 
 graph = facebook.GraphAPI(Page_Token)
 
 def reply_comment(data):
-	# reply = graph.put_object(parent_object=data, connection_name='comments',                         message='Test')
- 	
  	graph.put_object(data,"comments", message="សូមជួយឆែកសារ 😍")
 
 def main():
@@ -49,7 +52,7 @@ def monitor_comment():
 		print(data)
 		return data_converted
 def private_reply(comment_ids):
-	url = "https://graph.facebook.com/v12.0/me/messages?access_token=EAAFaTWn583kBAEEiZC5QxyP4nwuHa3yw69r900qYEmOq8RXItIa6r9DMh3gdaumqFf6ngRsXtn11XurLwsihrog8hUcqmbZAArmJBtoceHE7PPQLvbTXV8wZAUj5oGnBu3D0r3KPxvUbveSEhN0mCn1edODK7mhZAERWKxjeiAH0Y4rUxBF4"
+	url = "https://graph.facebook.com/v12.0/me/messages?access_token=" + Page_Token
 	multi_string = """តម្លៃប្រូម៉ូសិន
 - ១ទីប 15$ បង/អូន អាចប្រើបានពី១ខែទៅ២ខែ។
 - ទិញ១ ថែម១ ។
@@ -65,5 +68,6 @@ def private_reply(comment_ids):
 	request = requests.post(url=url, json=params)
 	print(request.text)
 
-main()
+if __name__ == "__main__":
+	main()
 
