@@ -10,7 +10,7 @@ load_dotenv()
 Page_Token = os.getenv("Page_Token")
 PAGE_ID = os.getenv("PAGE_ID")
 POST_ID_TO_MONITOR = os.getenv("POST_ID_TO_MONITOR")
-Page_Comment_ID = os.getenv("Page_Comment_ID")
+
 
 
 COMBINED_POST_ID_TO_MONITOR = '%s_%s' % (PAGE_ID, POST_ID_TO_MONITOR)
