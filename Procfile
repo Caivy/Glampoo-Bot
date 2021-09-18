@@ -1,1 +1,1 @@
-worker : python Glampoo.py
+worker : python3 Glampoo.py
