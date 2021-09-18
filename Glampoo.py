@@ -11,8 +11,11 @@ Page_Token = os.getenv("Page_Token")
 PAGE_ID = os.getenv("PAGE_ID")
 POST_ID_TO_MONITOR = os.getenv("POST_ID_TO_MONITOR")
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> f566af1eb616e9586b0ec79f13da14ecd58ec3de
 COMBINED_POST_ID_TO_MONITOR = '%s_%s' % (PAGE_ID, POST_ID_TO_MONITOR)
 
 graph = facebook.GraphAPI(Page_Token)
