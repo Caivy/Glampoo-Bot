@@ -3,7 +3,7 @@ import requests
 import json
 import time 
 
-Page_Token = "EAAFaTWn583kBAFmkulUXCnVRSCCCuTAa1b4bdYn4OyaOKwVmDYRahYXiEjFtfQPLe7qpoaM6B8JBP7FVsKllTxkHf3g7FV8YXsFShCbtP1rtcHohrm686BKt9947svBsDWDX5TeNAzjJsvoSGwOyrfRaTNp3W4DDIfUIR3ZBCGU8Pc4mX"
+Page_Token = "EAAFaTWn583kBAEEiZC5QxyP4nwuHa3yw69r900qYEmOq8RXItIa6r9DMh3gdaumqFf6ngRsXtn11XurLwsihrog8hUcqmbZAArmJBtoceHE7PPQLvbTXV8wZAUj5oGnBu3D0r3KPxvUbveSEhN0mCn1edODK7mhZAERWKxjeiAH0Y4rUxBF4"
 PAGE_ID = "112583993849066"
 POST_ID_TO_MONITOR = "324876845953112"
 Page_Comment_ID = "324876845953112_360627765711353"
@@ -49,16 +49,21 @@ def monitor_comment():
 		print(data)
 		return data_converted
 def private_reply(comment_ids):
-	url = "https://graph.facebook.com/v12.0/me/messages?access_token=EAAFaTWn583kBAFmkulUXCnVRSCCCuTAa1b4bdYn4OyaOKwVmDYRahYXiEjFtfQPLe7qpoaM6B8JBP7FVsKllTxkHf3g7FV8YXsFShCbtP1rtcHohrm686BKt9947svBsDWDX5TeNAzjJsvoSGwOyrfRaTNp3W4DDIfUIR3ZBCGU8Pc4mX"
+	url = "https://graph.facebook.com/v12.0/me/messages?access_token=EAAFaTWn583kBAEEiZC5QxyP4nwuHa3yw69r900qYEmOq8RXItIa6r9DMh3gdaumqFf6ngRsXtn11XurLwsihrog8hUcqmbZAArmJBtoceHE7PPQLvbTXV8wZAUj5oGnBu3D0r3KPxvUbveSEhN0mCn1edODK7mhZAERWKxjeiAH0Y4rUxBF4"
+	multi_string = """តម្លៃប្រូម៉ូសិន
+- ១ទីប 15$ បង/អូន អាចប្រើបានពី១ខែទៅ២ខែ។
+- ទិញ១ ថែម១ ។
+- ដឹកជូនដល់កន្លែង គ្រប់ទីតាំងទូទាំងប្រទេស។"""
 	params = {
     "recipient": {
         "comment_id": comment_ids
     },
     "message": {
-        "text":"Testing Private_Replies"
+        "text":multi_string
     }
 }
 	request = requests.post(url=url, json=params)
 	print(request.text)
 
 main()
+
