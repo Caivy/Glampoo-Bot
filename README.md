@@ -50,7 +50,17 @@ To run this project, you will need to add the following environment variables to
 
 
 
-  
+## Permission Required
+
+To run this project, you will need the following Permission
+
+`pages_messaging` ADVANCE ACCESS REQUIRE
+
+`pages_read_engagement`
+
+`pages_manage_posts`
+
+
 ## API Reference
 
 #### Get Comments
