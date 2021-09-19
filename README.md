@@ -1,6 +1,6 @@
 # Caivy-Bot | Facebook Graph API 
 
-A usefull Facebook Graph API bot that can integrade with your facebook page to easily manage your page.
+A useful Facebook Graph API bot that can integrate with your facebook page to easily manage your page.
 
 
 
