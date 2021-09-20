@@ -12,7 +12,7 @@ PAGE_ID = os.getenv("PAGE_ID")
 POST_ID_TO_MONITOR = os.getenv("POST_ID_TO_MONITOR")
 
 # So that we can use it more easier
-# Test
+
 COMBINED_POST_ID_TO_MONITOR = '%s_%s' % (PAGE_ID, POST_ID_TO_MONITOR)
 
 graph = facebook.GraphAPI(Page_Token)
