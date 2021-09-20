@@ -102,11 +102,6 @@ This project is used by the following Pages:
 - Caivy Marketplace
 
   
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
-
-  
 ## Authors
 
 - [@Caivy](https://github.com/Caivy)
