@@ -6,7 +6,7 @@ A useful Facebook Graph API bot that can integrate with your facebook page to ea
 
 ## Features
 
-- Check if there is a comment made
+- Check if there is a comment made on the specify post
 - Reply to comments
 - Private Replies to user that commented
 
